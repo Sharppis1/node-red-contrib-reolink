@@ -31,7 +31,7 @@ module.exports = function (RED) {
         node.connectionStatus = { fill: "yellow", shape: "ring", text: `Initializing...` };
         node.ability = null;
 
-
+        console.warn("Connection failed", node.protocol);
         // Fetch specific data
         async function queryCommand(command, https,requestBody = null) {
             if (node.token != null) {
