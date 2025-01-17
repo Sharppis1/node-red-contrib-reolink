@@ -23,7 +23,6 @@ module.exports = function (RED) {
 
         const node = this;
         node.ip = config.ip;
-        node.protocol = config.protocol;
         node.user = config.user;
         node.pass = config.pass;
         node.token = null;
@@ -36,7 +35,7 @@ module.exports = function (RED) {
         async function queryCommand(command, https,requestBody = null) {
             if (node.token != null) {
                     try {
-                        const response = await fetch(`${node.protocol}://${node.ip}/api.cgi?cmd=${command}&token=${node.token}`, {
+                        const response = await fetch(`https://${node.ip}/api.cgi?cmd=${command}&token=${node.token}`, {
                             method: "POST",
                             body: requestBody,
                             headers: { "Content-Type": "application/json" },
@@ -77,7 +76,7 @@ module.exports = function (RED) {
         // Request the token
         async function requestToken() {
             try {
-                const response = await fetch(`${node.protocol}://${node.ip}/api.cgi?cmd=Login`, {
+                const response = await fetch(`https://${node.ip}/api.cgi?cmd=Login`, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify([

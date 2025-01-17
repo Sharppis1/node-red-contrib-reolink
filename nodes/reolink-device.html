@@ -22,7 +22,6 @@ limitations under the License.
         defaults: {
             name: { value: "" },
             ip: { value: "", required: true },
-            protocol: { value: "", required: true },
             user: { value: "admin", required: true },
             pass: { value: "", required: true }
         },
@@ -36,16 +35,11 @@ limitations under the License.
             $('#node-input-ip').val(this.ip);
             $('#node-input-user').val(this.user);
             $('#node-input-pass').val(this.pass);
-            $("#node-input-https").on("click", function() {
-                $("button-group").removeClass("selected");
-                $(this).addClass("selected");
-            })
         },
 
         oneditsave: function () {
             this.name = $('#node-input-name').val();
             this.ip = $('#node-input-ip').val();
-            this.protocol = $('#node-input-https').val();
             this.user = $('#node-input-user').val();
             this.pass = $('#node-input-pass').val();
         }
@@ -62,12 +56,6 @@ limitations under the License.
     <div class="form-row">
         <label for="node-input-ip"><i class="fa fa-tag"></i> IP Address</label>
         <input type="text" id="node-input-ip" placeholder="192.168.1.x">
-    </div>
-    <div class="form-row">
-        <label for="node-input-https"><i class="fa fa-tag"></i>Protocol</label>
-        <span class="button-group">
-            <button type="button" id="node-input-https" class="red-ui-button toggle selected my-button-group" value="https">HTTPS</button><button type="button" id="node-input-https" class="red-ui-button toggle my-button-group" value="http">HTTP</button>
-        </span>
     </div>
     <div class="form-row">
         <label for="node-input-user"><i class="fa fa-user"></i> Username</label>
