@@ -36,16 +36,16 @@ limitations under the License.
             $('#node-input-ip').val(this.ip);
             $('#node-input-https').val(this.protocol);
             $('#node-input-user').val(this.user);
+            $(".my-button-group").on("click", function() {
+                $(".my-button-group").removeClass("selected");
+                $(this).addClass("selected");
+            })
         },
 
         oneditsave: function () {
             this.name = $('#node-input-name').val();
             this.ip = $('#node-input-ip').val();
-            if( $('#node-input-https').val().checked){
-                this.protocol = "https";
-            }else{
-                this.protocol = "http";
-            }
+            this.protocol = $('.my-button-group').val();
             this.user = $('#node-input-user').val();
             this.pass = $('#node-input-pass').val();
         }
@@ -64,8 +64,10 @@ limitations under the License.
         <input type="text" id="node-input-ip" placeholder="192.168.1.x">
     </div>
     <div class="form-row">
-        <label for="node-input-https"><i class="fa fa-tag"></i>Use https</label>
-        <input type="checkbox" id="node-input-https" placeholder="https">
+        <label for="node-input-https"><i class="fa fa-tag"></i>HTTP/HTTPS</label>
+        <span class="button-group">
+            <button type="button" class="red-ui-button toggle selected my-button-group">HTTPS</button><button type="button" class="red-ui-button toggle my-button-group">HTTP</button>
+        </span>
     </div>
     <div class="form-row">
         <label for="node-input-user"><i class="fa fa-user"></i> Username</label>
