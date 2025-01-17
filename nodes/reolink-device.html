@@ -22,6 +22,7 @@ limitations under the License.
         defaults: {
             name: { value: "" },
             ip: { value: "", required: true },
+            protocol: { value: "", required: true },
             user: { value: "admin", required: true },
             pass: { value: "", required: true }
         },
@@ -33,12 +34,18 @@ limitations under the License.
         oneditprepare: function () {
             $('#node-input-name').val(this.name);
             $('#node-input-ip').val(this.ip);
+            $('#node-input-https').val(this.protocol);
             $('#node-input-user').val(this.user);
         },
 
         oneditsave: function () {
             this.name = $('#node-input-name').val();
             this.ip = $('#node-input-ip').val();
+            if( $('#node-input-https').val().checked){
+                this.protocol = "https";
+            }else{
+                this.protocol = "http";
+            }
             this.user = $('#node-input-user').val();
             this.pass = $('#node-input-pass').val();
         }
@@ -55,6 +62,10 @@ limitations under the License.
     <div class="form-row">
         <label for="node-input-ip"><i class="fa fa-tag"></i> IP Address</label>
         <input type="text" id="node-input-ip" placeholder="192.168.1.x">
+    </div>
+    <div class="form-row">
+        <label for="node-input-https"><i class="fa fa-tag"></i>Use https</label>
+        <input type="checkbox" id="node-input-https" placeholder="https">
     </div>
     <div class="form-row">
         <label for="node-input-user"><i class="fa fa-user"></i> Username</label>

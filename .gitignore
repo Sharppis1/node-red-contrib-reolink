@@ -1,2 +1,3 @@
 ### Batch ###
 *.bat
+.DS_Store
