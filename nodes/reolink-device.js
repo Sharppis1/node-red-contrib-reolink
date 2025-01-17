@@ -30,7 +30,7 @@ module.exports = function (RED) {
         node.connectionStatus = { fill: "yellow", shape: "ring", text: `Initializing...` };
         node.ability = null;
         // Fetch specific data
-        async function queryCommand(command, https,requestBody = null) {
+        async function queryCommand(command,requestBody = null) {
             if (node.token != null) {
                     try {
                         const response = await fetch(`https://${node.ip}/api.cgi?cmd=${command}&token=${node.token}`, {
